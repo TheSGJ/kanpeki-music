@@ -6,7 +6,11 @@
   "forwardPorts": [3000],
 
   "name": "Flutter",
-
+"features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+        "version": "latest"
+    }
+},
   "customizations": {
     "vscode": {
       "extensions": ["Dart-Code.dart-code", "Dart-Code.flutter"]
