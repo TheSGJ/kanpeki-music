@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kanpekimusic/views/home.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Permission.notification.isDenied.then((value) {
+    if (value) {
+      Permission.notification.request();
+    }
+  });
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(const MyApp());
 }
 
@@ -17,12 +27,9 @@ class MyApp extends StatelessWidget {
       home: const Home(),
       title: 'Kanpeki Music',
       theme: ThemeData(
-        fontFamily: "regular",
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0
-        )
-      ),
+          fontFamily: "regular",
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.transparent, elevation: 0)),
     );
   }
 }
