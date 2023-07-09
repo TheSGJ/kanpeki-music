@@ -12,11 +12,12 @@ class Home extends StatelessWidget {
         appBar: AppBar(
           actions: [
             IconButton(
-                onPressed: () {}, icon: Icon(Icons.search, color: bgColor))
+                onPressed: () {},
+                icon: const Icon(Icons.search, color: whiteColor))
           ],
-          leading: Icon(
+          leading: const Icon(
             Icons.sort_rounded,
-            color: bgColor,
+            color: whiteColor,
           ),
           title: Text(
             "Kanpeki Music",
@@ -47,7 +48,7 @@ class Home extends StatelessWidget {
                         size: 30,
                       ),
                       trailing:
-                          Icon(Icons.play_arrow, color: whiteColor, size: 22),
+                          const Icon(Icons.play_arrow, color: whiteColor, size: 22),
                     ));
               }),
         ));
