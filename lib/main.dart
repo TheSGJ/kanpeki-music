@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kanpekimusic/views/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const Home(),
       title: 'Kanpeki Music',
       theme: ThemeData(
         fontFamily: "regular",
