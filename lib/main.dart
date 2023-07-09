@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kanpekimusic/views/home.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Permission.notification.isDenied.then((value) {
-    if (value) {
-      Permission.notification.request();
-    }
-  });
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  // Request audio file permission
+  await Permission.manageExternalStorage.request();
 
   runApp(const MyApp());
 }
