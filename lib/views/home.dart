@@ -7,12 +7,11 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatelessWidget {
-   const Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(PlayerController());
-
 
     return Scaffold(
       backgroundColor: bgDarkColor,
@@ -20,7 +19,10 @@ class Home extends StatelessWidget {
         backgroundColor: bgDarkColor,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              // Implement search functionality
+              _onSearchPressed();
+            },
             icon: const Icon(Icons.search, color: whiteColor),
           ),
         ],
@@ -35,7 +37,7 @@ class Home extends StatelessWidget {
       ),
       body: FutureBuilder<List<SongModel>>(
         future: _retrieveSongs(controller),
-        builder: (BuildContext context, snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<SongModel>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
@@ -113,5 +115,11 @@ class Home extends StatelessWidget {
     } else {
       return [];
     }
+  }
+
+  void _onSearchPressed() {
+    // Implement search functionality
+    // This method will be called when the search button is pressed in the AppBar
+    // You can show a search dialog, navigate to a search screen, or handle search in any other way
   }
 }
