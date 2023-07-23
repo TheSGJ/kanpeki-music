@@ -42,7 +42,12 @@ class PlayerController extends GetxController {
   void queryAudioFiles() async {
     // Query audio files using the audioQuery instance
     // ignore: unused_local_variable
-    final songs = await audioQuery.querySongs();
+    final songs = await audioQuery.querySongs(
+      sortType: null,
+      orderType: OrderType.ASC_OR_SMALLER,
+      uriType: UriType.EXTERNAL,
+      ignoreCase: true
+    );
 
     // Perform desired actions with the queried songs
     // For example, store the songs in a list or update the UI
