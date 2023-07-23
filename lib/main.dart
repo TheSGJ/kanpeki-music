@@ -7,7 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Request audio file permission
-  await Permission.manageExternalStorage.request();
+  await Permission.audio.request();
 
   runApp(const MyApp());
 }
