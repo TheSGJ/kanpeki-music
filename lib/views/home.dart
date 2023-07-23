@@ -50,30 +50,40 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: 100,
+                    itemCount: snapshot.data!.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                           margin: const EdgeInsets.only(bottom: 4),
-                          child: ListTile(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            tileColor: bgColor,
-                            title: Text(
-                              snapshot.data![index].displayNameWOExt,
-                              style: ourStyle(family: bold, size: 14),
-                            ),
-                            subtitle: Text(
-                              "${snapshot.data![index].artist}",
-                              style: ourStyle(family: regular, size: 11),
-                            ),
-                            leading: const Icon(
-                              Icons.music_note,
-                              color: whiteColor,
-                              size: 30,
-                            ),
-                            trailing: const Icon(Icons.play_arrow,
-                                color: whiteColor, size: 22),
-                          ));
+                          child: Obx(() => (ListTile(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8)),
+                                tileColor: bgColor,
+                                title: Text(
+                                  snapshot.data![index].displayNameWOExt,
+                                  style: ourStyle(family: bold, size: 14),
+                                ),
+                                subtitle: Text(
+                                  "${snapshot.data![index].artist}",
+                                  style: ourStyle(family: regular, size: 11),
+                                ),
+                                leading: QueryArtworkWidget(
+                                  id: snapshot.data![index].id,
+                                  type: ArtworkType.AUDIO,
+                                  nullArtworkWidget: const Icon(
+                                    Icons.music_note,
+                                    color: whiteColor,
+                                    size: 30,
+                                  ),
+                                ),
+                                trailing: controller.playIndex.value == index && controller.isPlaying.value
+                                    ? const Icon(Icons.play_arrow,
+                                        color: whiteColor, size: 22)
+                                    : null,
+                                onTap: () {
+                                  controller.playSong(
+                                      snapshot.data![index].uri, index);
+                                },
+                              ))));
                     }),
               );
             }

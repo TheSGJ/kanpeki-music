@@ -8,6 +8,7 @@ void main() async {
 
   // Request audio file permission
   await Permission.audio.request();
+  await Permission.storage.request();
 
   runApp(const MyApp());
 }
