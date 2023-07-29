@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:kanpekimusic/consts/colors.dart';
 import 'package:kanpekimusic/consts/text_style.dart';
 import 'package:kanpekimusic/controller/player_controller.dart';
+import 'package:kanpekimusic/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatelessWidget {
@@ -80,8 +81,9 @@ class Home extends StatelessWidget {
                                         color: whiteColor, size: 22)
                                     : null,
                                 onTap: () {
-                                  controller.playSong(
-                                      snapshot.data![index].uri, index);
+                                  Get.to(() => const Player());
+                                  // controller.playSong(
+                                  //     snapshot.data![index].uri, index);
                                 },
                               ))));
                     }),

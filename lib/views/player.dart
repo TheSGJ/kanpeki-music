@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:kanpekimusic/consts/colors.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Player extends StatelessWidget {
+  const Player({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Kanpeki Music",
-          style: TextStyle(fontSize: 20, color: whiteColor, fontFamily: "bold"),
+      backgroundColor: bgColor,
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Expanded(
+                child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.red,
+                shape: BoxShape.rectangle,
+              ),
+              alignment: Alignment.center,
+              child: const Icon(Icons.music_note),
+            )),
+            Expanded(
+                child: Container(
+              color: Colors.yellow,
+            )),
+          ],
         ),
       ),
-      body: Container(),
     );
   }
 }
