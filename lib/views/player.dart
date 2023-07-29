@@ -80,7 +80,7 @@ class Player extends StatelessWidget {
                           icon: const Icon(Icons.skip_previous_rounded,
                               size: 50, color: buttonColor)),
                       CircleAvatar(
-                        radius: 18,
+                        radius: 30,
                         backgroundColor: sliderColor,
                         child: Transform.scale(
                           scale: 1.3,
