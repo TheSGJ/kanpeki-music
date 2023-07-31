@@ -83,7 +83,7 @@ class Home extends StatelessWidget {
                                     : null,
                                 onTap: () {
                                   Get.to(() =>
-                                      Player(data: snapshot.data![index]));
+                                      Player(data: snapshot.data!));
                                   controller.playSong(
                                       snapshot.data![index].uri, index);
                                 },
