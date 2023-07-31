@@ -70,24 +70,32 @@ class Player extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      Text(
-                        "0:00",
-                        style: ourStyle(),
-                      ),
-                      Expanded(
-                          child: Slider(
-                              thumbColor: sliderColor,
-                              activeColor: sliderColor,
-                              inactiveColor: whiteColor,
-                              value: 0.0,
-                              onChanged: (newValue) {})),
-                      Text(
-                        "4:00",
-                        style: ourStyle(),
-                      ),
-                    ],
+                  Obx(
+                    () => Row(
+                      children: [
+                        Text(
+                          controller.position.value,
+                          style: ourStyle(),
+                        ),
+                        Expanded(
+                            child: Slider(
+                                thumbColor: sliderColor,
+                                activeColor: sliderColor,
+                                inactiveColor: whiteColor,
+                                min: const Duration(seconds: 0).inSeconds.toDouble(),
+                                max: controller.max.value,
+                                value: controller.value.value,
+                                onChanged: (newValue) {
+                                  controller.changeDurationToSeconds(
+                                      newValue.toInt());
+                                  newValue = newValue;
+                                })),
+                        Text(
+                          controller.duration.value,
+                          style: ourStyle(),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 12),
                   Row(
