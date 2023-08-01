@@ -8,7 +8,7 @@ class BottomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.find<PlayerController>();
+    var controller = Get.put(PlayerController());
     return GestureDetector(
       onTap: () {},
       child: Obx(
