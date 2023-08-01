@@ -12,11 +12,12 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<SongModel>? songData;
     var controller = Get.put(PlayerController());
     return Scaffold(
         backgroundColor: bgDarkColor,
-        bottomNavigationBar: const BottomAppBar(
-          child: BottomTabBar(),
+        bottomNavigationBar:  BottomAppBar(
+          child: BottomTabBar(data: songData!),
         ),
         appBar: AppBar(
           backgroundColor: bgDarkColor,
@@ -51,6 +52,7 @@ class Home extends StatelessWidget {
                 style: ourStyle(),
               ));
             } else {
+              songData = snapshot.data;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView.builder(
@@ -64,7 +66,7 @@ class Home extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8)),
                                 tileColor: bgColor,
                                 title: Text(
-                                  snapshot.data![index].displayNameWOExt,
+                                  snapshot.data![index].title,
                                   style: ourStyle(family: bold, size: 14),
                                 ),
                                 subtitle: Text(
@@ -80,11 +82,7 @@ class Home extends StatelessWidget {
                                     size: 30,
                                   ),
                                 ),
-                                trailing: controller.playIndex.value == index &&
-                                        controller.isPlaying.value
-                                    ? const Icon(Icons.play_arrow,
-                                        color: whiteColor, size: 22)
-                                    : null,
+                                
                                 onTap: () {
                                   Get.to(() => Player(data: snapshot.data!));
                                   controller.playSong(
