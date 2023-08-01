@@ -64,7 +64,7 @@ class Home extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8)),
                                 tileColor: bgColor,
                                 title: Text(
-                                  snapshot.data![index].title,
+                                  snapshot.data![index].displayNameWOExt,
                                   style: ourStyle(family: bold, size: 14),
                                 ),
                                 subtitle: Text(
