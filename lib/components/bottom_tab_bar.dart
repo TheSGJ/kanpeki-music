@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kanpekimusic/consts/colors.dart';
 import 'package:kanpekimusic/controller/player_controller.dart';
 
 class BottomTabBar extends StatelessWidget {
@@ -12,35 +13,26 @@ class BottomTabBar extends StatelessWidget {
       onTap: () {},
       child: Obx(
         () => AnimatedContainer(
+          color: bottomTabPlayerColor,
           duration: const Duration(milliseconds: 200),
           height: controller.isAudioPlayerNotNull.value ? 80.0 : 0,
           child: Row(
+            
             children: <Widget>[
               IconButton(
-                tooltip: 'Open popup menu',
-                icon: const Icon(Icons.more_vert),
+                tooltip: 'Previous Song',
+                icon: const Icon(Icons.skip_previous, color: whiteColor,),
                 onPressed: () {
-                  final SnackBar snackBar = SnackBar(
-                    content: const Text('Yay! A SnackBar!'),
-                    action: SnackBarAction(
-                      label: 'Undo',
-                      onPressed: () {},
-                    ),
-                  );
-
-                  // Find the ScaffoldMessenger in the widget tree
-                  // and use it to show a SnackBar.
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
               ),
               IconButton(
-                tooltip: 'Search',
-                icon: const Icon(Icons.search),
+                tooltip: 'Play',
+                icon: const Icon(Icons.play_arrow, color: whiteColor,),
                 onPressed: () {},
               ),
               IconButton(
-                tooltip: 'Favorite',
-                icon: const Icon(Icons.favorite),
+                tooltip: 'Next Song',
+                icon: const Icon(Icons.skip_next, color: whiteColor,),
                 onPressed: () {},
               ),
             ],
