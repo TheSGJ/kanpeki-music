@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kanpekimusic/components/bottom_tab_bar.dart';
 import 'package:kanpekimusic/consts/colors.dart';
 import 'package:kanpekimusic/consts/text_style.dart';
 import 'package:kanpekimusic/controller/player_controller.dart';
@@ -15,9 +14,6 @@ class Home extends StatelessWidget {
     var controller = Get.put(PlayerController());
     return Scaffold(
         backgroundColor: bgDarkColor,
-        bottomNavigationBar:  const BottomAppBar(
-          child: BottomTabBar(),
-        ),
         appBar: AppBar(
           backgroundColor: bgDarkColor,
           actions: [
@@ -80,9 +76,14 @@ class Home extends StatelessWidget {
                                     size: 30,
                                   ),
                                 ),
-                                
+                                trailing: controller.playIndex.value == index &&
+                                        controller.isPlaying.value
+                                    ? const Icon(Icons.play_arrow,
+                                        color: whiteColor, size: 22)
+                                    : null,
                                 onTap: () {
-                                  Get.to(() => Player(data: snapshot.data!));
+                                  Get.to(() =>
+                                      Player(data: snapshot.data!));
                                   controller.playSong(
                                       snapshot.data![index].uri, index);
                                 },
