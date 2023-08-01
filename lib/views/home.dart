@@ -15,8 +15,8 @@ class Home extends StatelessWidget {
     var controller = Get.put(PlayerController());
     return Scaffold(
         backgroundColor: bgDarkColor,
-        bottomNavigationBar: BottomAppBar(
-          child: BottomTabBar(isElevated: true, isVisible: !controller.isAudioPlayerNull.value),
+        bottomNavigationBar: const BottomAppBar(
+          child: BottomTabBar(),
         ),
         appBar: AppBar(
           backgroundColor: bgDarkColor,
@@ -86,8 +86,7 @@ class Home extends StatelessWidget {
                                         color: whiteColor, size: 22)
                                     : null,
                                 onTap: () {
-                                  Get.to(() =>
-                                      Player(data: snapshot.data!));
+                                  Get.to(() => Player(data: snapshot.data!));
                                   controller.playSong(
                                       snapshot.data![index].uri, index);
                                 },

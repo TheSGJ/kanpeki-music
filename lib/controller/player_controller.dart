@@ -9,7 +9,7 @@ class PlayerController extends GetxController {
 
   var playIndex = 0.obs;
   var isPlaying = false.obs;
-  var isAudioPlayerNull = true.obs;
+  var isAudioPlayerNotNull = false.obs;
   var duration = ''.obs;
   var position = ''.obs;
   var max = 0.0.obs;
@@ -43,7 +43,7 @@ class PlayerController extends GetxController {
       audioPlayer.play();
 
       isPlaying(true);
-      isAudioPlayerNull(false);
+      isAudioPlayerNotNull(true);
       updatePosition();
     } on Exception catch (e) {
       // ignore: avoid_print
