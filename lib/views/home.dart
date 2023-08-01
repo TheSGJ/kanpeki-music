@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kanpekimusic/components/bottom_tab_bar.dart';
 import 'package:kanpekimusic/consts/colors.dart';
 import 'package:kanpekimusic/consts/text_style.dart';
 import 'package:kanpekimusic/controller/player_controller.dart';
@@ -14,6 +15,9 @@ class Home extends StatelessWidget {
     var controller = Get.put(PlayerController());
     return Scaffold(
         backgroundColor: bgDarkColor,
+        bottomNavigationBar: BottomAppBar(
+          child: BottomTabBar(isElevated: true, isVisible: !controller.isAudioPlayerNull.value),
+        ),
         appBar: AppBar(
           backgroundColor: bgDarkColor,
           actions: [
