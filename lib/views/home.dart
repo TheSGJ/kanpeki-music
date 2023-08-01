@@ -12,12 +12,11 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<SongModel>? songData;
     var controller = Get.put(PlayerController());
     return Scaffold(
         backgroundColor: bgDarkColor,
-        bottomNavigationBar:  BottomAppBar(
-          child: BottomTabBar(data: songData!),
+        bottomNavigationBar:  const BottomAppBar(
+          child: BottomTabBar(),
         ),
         appBar: AppBar(
           backgroundColor: bgDarkColor,
@@ -52,7 +51,6 @@ class Home extends StatelessWidget {
                 style: ourStyle(),
               ));
             } else {
-              songData = snapshot.data;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView.builder(
