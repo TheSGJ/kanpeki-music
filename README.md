@@ -1,4 +1,4 @@
-# kanpekimusic
+# Kanpeki Music
 
 A new Flutter project.
 
